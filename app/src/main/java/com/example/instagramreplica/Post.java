@@ -36,4 +36,6 @@ public class Post  extends ParseObject{
         put(KEY_USER, user);
     }
 
+    public void setDescription(String description) {
+    }
 }
