@@ -8,16 +8,20 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -34,10 +38,12 @@ public class MainActivity extends AppCompatActivity {
     private EditText etDescription;
     private Button btnCaptureImage;
     private ImageView ivPostImage;
+    private BottomNavigationView bottomNavigationItemView ;
     private Button btnSubmit;
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     private File photoFile;
     public String photoFileName = "photo.jpg";
+
 
 
     @Override
@@ -49,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
+        bottomNavigationItemView = findViewById(R.id.bottomNavigation);
 
 
         btnCaptureImage.setOnClickListener(new View.OnClickListener(){
@@ -77,6 +84,27 @@ public class MainActivity extends AppCompatActivity {
                 savePost(description, currentUser, photoFile);
 
             }
+        });
+        bottomNavigationItemView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem){
+                //return false;
+                Fragment fragment;
+                switch (menuItem.getItemId()) {
+                    case R.id.action_home:
+                        Toast.makeText(MainActivity.this, "Home!", Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.action_compose:
+                        Toast.makeText(MainActivity.this, "Compose!", Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.action_profile:
+                        Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_LONG).show();
+                    default:
+                        break;
+                }
+                return true;
+            }
+
         });
 
     }
