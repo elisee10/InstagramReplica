@@ -23,15 +23,12 @@ import androidx.fragment.app.Fragment;
 import com.example.instagramreplica.Post;
 import com.example.instagramreplica.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
-import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -41,6 +38,7 @@ import static android.app.Activity.RESULT_OK;
  * create an instance of this fragment.
  */
 public class ComposeFragment extends Fragment {
+
 
 
     public static final String TAG = "ComposeFragment";
@@ -217,22 +215,5 @@ public class ComposeFragment extends Fragment {
         });
     }
 
-    private void queryPosts() {
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        query.include(Post.KEY_USER);
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if (e != null) {
-                    Log.e(TAG, "Issue with getting posts", e);
-                    return;
-                }
 
-                for (Post post : posts) {
-                    //Log.i(TAG, "Post:" + post.getDescription(), "username: " + post.getUSer().getUsername());
-                }
-
-            }
-        });
-    }
 }
