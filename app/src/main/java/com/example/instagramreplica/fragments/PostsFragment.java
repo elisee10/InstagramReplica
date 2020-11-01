@@ -91,7 +91,7 @@ public class PostsFragment extends Fragment {
         //3. Set the adapter on the recycler view
         //4. Set the layout manager on the recycler view
 
-     queryPosts();
+     //queryPosts();
 
     }
 
