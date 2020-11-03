@@ -8,14 +8,17 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.instagramreplica.Post;
+import com.example.instagramreplica.PostAdapter;
 import com.example.instagramreplica.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,6 +31,8 @@ public class PostsFragment extends Fragment {
 
     public static final String  TAG = "PostsFragments";
     private RecyclerView rvPosts;
+    private PostAdapter adapter;
+    private List<Post> allPosts;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -83,15 +88,20 @@ public class PostsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         rvPosts = view.findViewById(R.id.rvPosts);
 
+        allPosts  = new ArrayList<>();
+        adapter = new PostAdapter(getContext(), allPosts );
+
 
         //Steps for using the recycler view
         //0. Create layout for one row  in the list
         //1. Create the adapter
         //2. Create the data Source
         //3. Set the adapter on the recycler view
+        rvPosts.setAdapter(adapter);
         //4. Set the layout manager on the recycler view
+        rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
 
-     //queryPosts();
+        queryPosts();
 
     }
 
@@ -109,6 +119,8 @@ public class PostsFragment extends Fragment {
                 for (Post post : posts) {
                     Log.i(TAG, "Post: " + post.getDescription() + ",  username: " + post.getUser().getUsername());
                 }
+                allPosts.addAll(posts);
+                adapter.notifyDataSetChanged();
 
             }
         });
