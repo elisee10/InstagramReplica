@@ -19,9 +19,10 @@ The following **optional** features are implemented:
 
 ## Video Walkthrough
 
+
 Here's a walkthrough of implemented user stories:
 
-<img src='http://g.recordit.co/fDwvpnt9lq.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+- [Link to gif](http://g.recordit.co/fDwvpnt9lq.gif) - A Demo of my progress!
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
