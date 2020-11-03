@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.instagramreplica.fragments.ComposeFragment;
 import com.example.instagramreplica.fragments.PostsFragment;
+import com.example.instagramreplica.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,8 +46,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_profile:
                         //TODO: Update the action profile
                         //Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_LONG).show();
-                        fragment = new ComposeFragment();
+                       // fragment = new ComposeFragment();
                     default:
+                        fragment = new ProfileFragment();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();

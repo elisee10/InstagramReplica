@@ -31,8 +31,8 @@ public class PostsFragment extends Fragment {
 
     public static final String  TAG = "PostsFragments";
     private RecyclerView rvPosts;
-    private PostAdapter adapter;
-    private List<Post> allPosts;
+    protected  PostAdapter adapter;
+    protected  List<Post> allPosts;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -105,9 +105,11 @@ public class PostsFragment extends Fragment {
 
     }
 
-    private void queryPosts() {
+    protected  void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
+        query.setLimit(20);
+        query.addDescendingOrder(Post.KEY_CREATED_USER);
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
