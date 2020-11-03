@@ -22,7 +22,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-- [Link to gif](http://g.recordit.co/fDwvpnt9lq.gif) - A Demo of my progress!
+- [Link to gif](http://g.recordit.co/6dqv2l3EWO.gif) - A Demo of my progress!
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
